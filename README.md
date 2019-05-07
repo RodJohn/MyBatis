@@ -4,12 +4,35 @@
 
 # 使用
 
-XML
-注解
-pageHelp
-通用mapper
+config
+  TypeHandle 
+    枚举和货币
+  datasource、连接池
+  plugins
+  
+  
+mapper
+  XML
+  注解
+  	统一写法便于管理
+  	
+  pageHelp
+  通用mapper
+  idea eclipse插件 跳转
+
+
 
 https://mp.weixin.qq.com/s/yw9aHs0geMDS-vSid1-Xww
+
+scope 和 线程
+
+
+
+
+事务控制
+
+
+
 
 
 # 源码
