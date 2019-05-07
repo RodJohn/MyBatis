@@ -32,7 +32,14 @@ scope 和 线程
 事务控制
 
 
+https://blog.csdn.net/hellozpc/article/details/80878563#12_1741
 
+
+# 麻烦点
+
+实体修改时  xml中的SQL都得修改
+
+# 
 
 
 # 源码
