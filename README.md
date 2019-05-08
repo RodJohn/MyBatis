@@ -34,6 +34,7 @@ https://blog.csdn.net/hellozpc/article/details/80878563#12_1741
 # 麻烦点
 
 不是面向对象
+很容易写错
 实体修改时  xml中的SQL都得修改
 
 # 
