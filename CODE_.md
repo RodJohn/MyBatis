@@ -4,10 +4,15 @@ config
 sqlsession
 mapper
 为什么接口可以调用方法
+  
 
-代理的实现
+  sqlSession.getMapper
+  代理的实现
+  怎样生成代理对象
+  
 
-java代理
+
+
 
 时序图
 
