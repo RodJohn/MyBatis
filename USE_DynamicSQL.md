@@ -93,18 +93,23 @@ set
 	
 	当使用可迭代对象或者数组时，index 是当前迭代的次数，item 的值是本次迭代获取的元素。
 	当使用 Map 对象，index 是键，item 是值。
+	collection 为 list 代表集合  array代表数组
+	
 示例
 
-	<select id="selectPostIn" resultType="domain.blog.Post">
-	  SELECT * FROM POST P  WHERE ID in
-	  <foreach item="item"  collection="list"
-		  open="(" separator="," close=")">
-			#{item}
-	  </foreach>
-	</select>
 
+	//接口方法
+	ArrayList<User> selectByIds(List<Integer> ids);
 
-
+	//xml映射文件
+	<select id="selectByIds" resultMap="BaseResultMap">
+	    Select * from jria where ID in
+	    <foreach item="item" collection="list" open="(" separator="," close=")">
+		  #{item}
+	      </foreach>
+	  </select> 
+	
+	
 # 不够OOP
 
 foreach 空集合
