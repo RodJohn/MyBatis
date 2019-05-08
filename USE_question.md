@@ -45,3 +45,14 @@ mybatis找不到mapper
             </resource>
         </resources>
     </build>
+    
+    
+    
+# 特殊字符
+
+ >< 在xml中是特殊字符 必须转义 才能正常使用
+ 
+# #$
+
+ 
+ 
