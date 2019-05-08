@@ -10,7 +10,6 @@ config
   datasource、连接池
   plugins
   
-  
 mapper
   XML
   注解
@@ -20,20 +19,16 @@ mapper
   通用mapper
   idea eclipse插件 跳转
 
-
-
 https://mp.weixin.qq.com/s/yw9aHs0geMDS-vSid1-Xww
 
 scope 和 线程
 
 
 
-
 事务控制
 
-
+http://www.mybatis.org/mybatis-3/index.html
 https://blog.csdn.net/hellozpc/article/details/80878563#12_1741
-https://blog.csdn.net/techbirds_bao/article/details/9233599
 
 
 # 麻烦点
