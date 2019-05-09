@@ -18,3 +18,19 @@ mapper
 
 sqlsession
 
+
+
+selecteOne   
+
+
+execute 模板模式
+
+
+statementhandle
+
+resultsethandle
+
+关闭资源
+
+errorcontant
+
