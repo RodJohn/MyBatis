@@ -46,6 +46,10 @@
 	  <setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
+自动映射
+
+	http://www.mybatis.org/mybatis-3/zh/sqlmap-xml.html#Auto-mapping
+	
 在SQL中转换
 
 	<select id="selectUsers" resultType="User">
