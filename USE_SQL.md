@@ -1,32 +1,35 @@
 
-
 # select
-
-## 作用
-
-	select标签用于定义一个查询语句	
-
-## 示例
-
-	<select id="selectPersons" resultType="hashmap">
-	  SELECT * FROM PERSON 
-	</select>
-	
-	
-## 功能要点
-	
-	id
-		当前名称空间下的statement的唯一标识
-	resultType
-		将结果集映射为java的对象类型。必须（和 resultMap 二选一）
-	resultMap
-		将结果集映射为java的自定义类型
-
-# update and delete
 
 作用
 
-	update、delete标签用于定义一个修改语句	
+	select标签用于定义一个查询语句	
+	
+常用参数
+	
+	id
+		当前名称空间下的statement的唯一标识
+	statementType 	
+		设定语句类型 默认值：PREPARED。
+	resultType
+		将结果集映射为java的对象类型。
+		如果返回的是集合，那应该设置为集合包含的类型，而不是集合本身
+	resultMap
+		将结果集映射为java的自定义类型
+		（和 resultMap 二选一）
+
+示例
+
+	<select id="selectPersons" resultType="com.john.User">
+	  SELECT * FROM User 
+	</select>
+
+
+# update 
+
+作用
+
+	update标签用于定义一个修改语句	
 
 示例
 
@@ -34,33 +37,61 @@
 	  delete from Author where id = 1
 	</delete>
 
-	
-属性
-	
-	id返回修改行数
+返回修改行数
 
+	要获取返回修改行数
+	直接在mapper接口文件直接返回int类型即可
+	sql语句和正常一样，无需设置返回值类型
+	mybatis框架会自动完整这些功能
+	（JDBC链接中可能需要参数useAffectedRows=true）
 
+# delete
+
+	主要用法类似于update	
 
 # insert
 
-作用
+	主要用法类似于update
+	下面演示主键的生成和设置
+	
+## useGeneratedKeys
 
-	insert标签用于定义一个修改语句	
+说明
+
+	使用数据库自动生成主键的字段并设置到目标属性上
+	
+参数
+
+	useGeneratedKeys 	
+		MyBatis 使用 JDBC 的 getGeneratedKeys 方法来取出由数据库内部生成的主键，默认值：false。
+	keyProperty 	
+		MyBatis 会通过 getGeneratedKeys 的返回值或者通过 insert 语句的 selectKey 子元素设置它的键值，
 
 示例
 
-	<insert id="insertAuthor" >
-	  insert into Author  values ("john")
+	<insert id="insertAuthor" useGeneratedKeys="true" keyProperty="id">
+	  insert into Author values (#{username},#{password},#{email},#{bio})
 	</insert>
 
-	
-属性
-	
-	id返回修改行数
+## selectKey
 
-useGeneratedKeys:开启主键回写
-keyColumn：指定数据库的主键
-keyProperty：主键对应的pojo属性名
+说明
+
+	使用自定义SQL生成的数据设置为主键，并设置到目标属性上
+	
+参数
+
+
+示例
+
+	<insert id="insertAuthor">
+	  <selectKey keyProperty="id" resultType="int" order="BEFORE">
+		select MAX(id)+1 a from User
+	  </selectKey>
+	  insert into User  values (#{id}, #{username}, #{password})
+	</insert>
+
+
 
 	
 # sql
@@ -78,20 +109,4 @@ keyProperty：主键对应的pojo属性名
 	  from some_table 
 	</select>	
 	
-# 特殊字符
- 
- xml中 > < 是特殊字符
- 
-使用转义字符替换
- 
-	 &lt;  替换 <   
-	 &gt;  替换 >
-	 
-使用标记符号
-	 	 
- 	<![CDATA[ < ]]>
 	
-	但是使用<![CDATA[ ]]>标记的sql语句中的<where> <if>等标签不会被解析。
- 
- 
- 
